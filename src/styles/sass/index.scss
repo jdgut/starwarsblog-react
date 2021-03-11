@@ -1,0 +1,26 @@
+@import '~bootstrap/scss/bootstrap.scss';
+@import '1-fonts.scss';
+@import '2-colors.scss';
+
+* {
+  color: $main-black;
+}
+
+body {
+  background-color: $main-black;
+}
+
+h1 {
+  color: $main-pink;
+  font-weight: $bold;
+}
+
+img.logo {
+  height: 50px;
+}
+
+.main-content {
+  background-color: $gainsboro;
+  height: 89.5vh;
+  padding: 0 3rem;
+}
