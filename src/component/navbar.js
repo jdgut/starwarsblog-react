@@ -13,7 +13,7 @@ export const Nav = () => {
 		return (
 			<Dropdown.Item className="d-flex justify-content-between" key={favorite} onClick={() => actions.removeFromFavorites(id,type )} >
 				<label>{store[type][id].name}</label>
-				<i class="fas fa-trash-alt"></i>
+				<i className="fas fa-trash-alt"></i>
 			</Dropdown.Item>
 		)
 	});
@@ -30,12 +30,12 @@ export const Nav = () => {
 			<div className="favorites-wrapper">
 				<Dropdown>
 					<Dropdown.Toggle variant="success" id="dropdown-basic">
-						Favorites <span class="badge badge-secondary">{store.favorites.length}</span>
+						Favorites <span className="badge badge-secondary">{store.favorites.length}</span>
 					</Dropdown.Toggle>
 					<Dropdown.Menu>
 						{favoritesList.length > 0 && favoritesList}
 						{
-							favoritesList.length ==0 && 
+							favoritesList.length === 0 && 
 								<Dropdown.Item>
 									You haven't added favorites.
 								</Dropdown.Item>

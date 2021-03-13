@@ -10,8 +10,6 @@ import Button from "react-bootstrap/Button";
 const Cards = (props) => {
   const { store, actions } = useContext(Context);
   const cardsData = props.type in store ? store[props.type] : [];
-  const fasHeart = <i className="fas fa-heart favorite"></i>
-  const faHeart = <i className="far fa-heart favorite"></i>
   const layout = cardsData.map( (data, i )=> {
     return (
       <Col lg={4} className="mb-4" key={i}>

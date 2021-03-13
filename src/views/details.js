@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useContext } from "react";
+import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 const Details = () => {
-  const { store, actions } = useContext(Context);
+  const { store } = useContext(Context);
   const params = useParams();
   return (
     <>
@@ -14,7 +14,7 @@ const Details = () => {
       { store[params.view][params.id] && (
         <>
           <div className="media">
-            <img className="mr-4" width="800" height="600" src={`https://loremflickr.com/600/400/${store[params.view][params.id].name}`} alt={`${store[params.view][params.id].name} Picture`} />
+            <img className="mr-4" width="800" height="600" src={`https://loremflickr.com/600/400/${store[params.view][params.id].name}`} alt={`${store[params.view][params.id].name} `}/>
             <div className="media-body">
               <h1 className="mt-0">{store[params.view][params.id].name}</h1>
               <p>
@@ -66,7 +66,7 @@ const Details = () => {
               </Row>
             )}
 
-            {params.view == 'planets' && (
+            {params.view === 'planets' && (
               <Row>
                 <Col md={2}>
                   <p>

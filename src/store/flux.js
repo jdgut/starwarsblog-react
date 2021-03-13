@@ -7,29 +7,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			favorites: []
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
-			},
 			initializeData: () => {
 				getActions().setCharacters();
 				getActions().setPlanets();
@@ -63,12 +40,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			addToFavorites: (id, type) => {
 				const el = `${id}-${type}`;
-				setStore({ favorites: [... getStore().favorites, el]});
+				setStore({ favorites: [...getStore().favorites, el]});
 			},
 			removeFromFavorites: (id, type) => {
 				const el = `${id}-${type}`;
 				const newFavorites = getStore().favorites.filter( i => i !== el);
 				setStore({favorites: newFavorites });
+			},
+			saveToStorage: () => {
+				localStorage.setItem('starwarsapi', getStore());
 			}
 		}
 	};
