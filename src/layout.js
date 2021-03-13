@@ -9,6 +9,7 @@ import Container from 'react-bootstrap/Container';
 
 
 import { Home } from "./views/home";
+import Details from "./views/details";
 
 import injectContext from "./store/appContext";
 
@@ -30,6 +31,9 @@ const Layout = () => {
 					<Switch>
 						<Route exact path="/">
 							<Home />
+						</Route>
+            <Route exact path="/:view/:id">
+							<Details />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

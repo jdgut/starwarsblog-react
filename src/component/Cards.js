@@ -10,8 +10,8 @@ import Button from "react-bootstrap/Button";
 const Cards = (props) => {
   const { store, actions } = useContext(Context);
   const cardsData = props.type in store ? store[props.type] : [];
-  const fasHeart = <i class="fas fa-heart favorite"></i>
-  const faHeart = <i class="far fa-heart favorite"></i>
+  const fasHeart = <i className="fas fa-heart favorite"></i>
+  const faHeart = <i className="far fa-heart favorite"></i>
   const layout = cardsData.map( (data, i )=> {
     return (
       <Col lg={4} className="mb-4" key={i}>
@@ -20,14 +20,17 @@ const Cards = (props) => {
         <Card.Body>
           <Card.Title>{data.name}</Card.Title>
           <Card.Text>
-            {props.type === 'characters' && <div>Gender: {data.gender}<br/>Hair-color: {data.hair_color}<br/>Eye-color: {data.eye_color}</div>}
-            {props.type === 'planets' && <div>Population: {data.population}<br/>Terrains: {data.terrain}</div>}
+            {props.type === 'characters' && <>Gender: {data.gender}<br/>Hair-color: {data.hair_color}<br/>Eye-color: {data.eye_color}</>}
+            {props.type === 'planets' && <>Population: {data.population}<br/>Terrains: {data.terrain}</>}
           </Card.Text>
-          <div class="d-flex justify-content-between" >
-            <Link to={props.type === 'characters' ? `/characters/` : `/planets/`}>
-              <Button variant="outline-primary">Go somewhere</Button>
+          <div className="d-flex justify-content-between" >
+            <Link to={props.type === 'characters' ? `/characters/${i}` : `/planets/${i}`}>
+              <Button variant="outline-primary">Learn more!</Button>
             </Link>
-            {faHeart}
+            <>
+              {store.favorites.includes(`${i}-${props.type}`) && <i className="fas fa-heart favorite" onClick={() => actions.removeFromFavorites(i,props.type ) }></i>}
+              {!store.favorites.includes(`${i}-${props.type}`) && <i className="far fa-heart favorite" onClick={() => actions.addToFavorites(i,props.type ) }></i>}
+            </>
           </div>
           
         </Card.Body>

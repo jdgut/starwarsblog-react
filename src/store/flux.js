@@ -60,6 +60,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					throw new Error(error);
 				}
+			},
+			addToFavorites: (id, type) => {
+				const el = `${id}-${type}`;
+				setStore({ favorites: [... getStore().favorites, el]});
+			},
+			removeFromFavorites: (id, type) => {
+				const el = `${id}-${type}`;
+				const newFavorites = getStore().favorites.filter( i => i !== el);
+				setStore({favorites: newFavorites });
 			}
 		}
 	};

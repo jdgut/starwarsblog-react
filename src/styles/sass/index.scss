@@ -30,3 +30,26 @@ i.favorite {
   color: orange;
   cursor: pointer;
 }
+
+.media h1 {
+  text-align: center;
+}
+.media p {
+  color: $main-light;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.divider {
+  border: 2px solid $main-pink;
+  margin: 2rem 0;
+}
+
+.details * {
+  color: $main-pink;
+  font-size: 1.3rem;
+  text-align: center;
+}
+.favorites-wrapper {
+  padding-right: 5rem;
+}
